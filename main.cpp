@@ -123,7 +123,6 @@ private:
     Node<T>* sortList(Node<T>* node) {
         if (node == nullptr || node->next == nullptr) return node;
 
-        // Split list into two halves
         Node<T>* temp = nullptr;
         Node<T>* slow = node;
         Node<T>* fast = node;
@@ -143,23 +142,23 @@ private:
     }
 
     Node<T>* mergeSort(Node<T>* l1, Node<T>* l2) {
-        Node<T> dummy;
-        Node<T>* temp = &dummy;
+        Node<T> temp1;
+        Node<T>* temp2 = &temp1;
 
         while (l1 && l2) {
             if (l1->data <= l2->data) {
-                temp->next = l1;
+                temp2->next = l1;
                 l1 = l1->next;
             } else {
-                temp->next = l2;
+                temp2->next = l2;
                 l2 = l2->next;
             }
-            temp = temp->next;
+            temp2 = temp2->next;
         }
 
-        temp->next = l1 ? l1 : l2;
+        temp2->next = l1 ? l1 : l2;
 
-        return dummy.next;
+        return temp1.next;
     }
 
 public:
@@ -185,11 +184,11 @@ int main() {
     std::cout << "Back: " << list.back() << std::endl;
 
     list.pop_back();
-    std::cout << "Back after pop_back: " << list.back() << std::endl;
+    std::cout << "Back despues pop_back: " << list.back() << std::endl;
 
     list.reverse();
-    std::cout << "Front after reverse: " << list.front() << std::endl;
-    std::cout << "Back after reverse: " << list.back() << std::endl;
+    std::cout << "Front despues del reverse: " << list.front() << std::endl;
+    std::cout << "Back despues del reverse: " << list.back() << std::endl;
 
     List<int> list2;
     list2.push_front(10);
@@ -198,9 +197,8 @@ int main() {
     list2.push_front(40);
     list2.push_back(8);
 
-    std::cout << "Original list: ";
+    std::cout << "Lista Original: ";
     list2.print();
-    //Imprime la lista ordenada
     list2.sort();
     std::cout << "Sorted list: ";
     list2.print();
