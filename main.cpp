@@ -200,7 +200,7 @@ int main() {
 
     std::cout << "Original list: ";
     list2.print();
-
+    //Imprime la lista ordenada
     list2.sort();
     std::cout << "Sorted list: ";
     list2.print();
